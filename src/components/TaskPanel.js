@@ -1,0 +1,61 @@
+import React from "react";
+
+export default function TaskPanel(props) {
+  const deleteElement = () => {
+    [
+      props.setTodos(
+        props.todos.filter((element) => {
+          if (element.id !== props.id) return element;
+        })
+      ),
+    ];
+    props.showAlert("Task Deleted", "success");
+  };
+  
+  const changeStatus = () => {
+    [
+      props.setTodos(
+        props.todos.filter((element) => {
+          if (element.id == props.id) element.status = !element.status;
+          return element;
+        })
+      ),
+    ];
+  };
+
+  return (
+    <div>
+      <div className="row">
+        <div className="col">
+          <li>
+            <div className="container">
+              <div
+                className="card"
+                style={{ width: "58rem", marginTop: "25px" }}
+              >
+                <div className="card-body">
+                  <h5
+                    className="card-title"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: props.status ? "line-through" : "none",
+                      fontStyle: props.status ? "italic" : "normal",
+                    }}
+                    onClick={changeStatus}
+                  >
+                    {props.text}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+        <div className="col" style={{ marginTop: "33px" }}>
+          <button className="btn btn-lg btn-danger" onClick={deleteElement}>
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
