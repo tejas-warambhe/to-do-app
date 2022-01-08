@@ -2,11 +2,14 @@ import React from "react";
 
 export default function TaskPanel(props) {
   const deleteElement = () => {
-    
+    const filtered = props.todos.filter((element) => {
+      if(element.id !== props.id) {
+        return element;
+      }
+      return false;
+    })
       props.setTodos(
-        props.todos.filter((element) => {
-          if (element.id !== props.id) return element;
-        })
+        filtered
       );
     
     props.showAlert("Task Deleted", "success");
@@ -14,12 +17,14 @@ export default function TaskPanel(props) {
   
   const changeStatus = () => {
     
+      const filtered = props.todos.map((element) => {
+        if(element.id === props.id)element.status = !element.status;
+        return element;
+      })
       props.setTodos(
-        props.todos.filter((element) => {
-          if (element.id == props.id) element.status = !element.status;
-          return element;
-        })
-      )
+          filtered
+ 
+      );
     
   };
 

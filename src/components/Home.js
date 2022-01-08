@@ -13,7 +13,7 @@ export default function Home({ curState, setState, todos, mode }) {
   };
   useEffect(() => {
     motivationApi();
-  }, []);
+  });
 
   return (
     <div>
