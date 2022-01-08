@@ -2,25 +2,25 @@ import React from "react";
 
 export default function TaskPanel(props) {
   const deleteElement = () => {
-    [
+    
       props.setTodos(
         props.todos.filter((element) => {
           if (element.id !== props.id) return element;
         })
-      ),
-    ];
+      );
+    
     props.showAlert("Task Deleted", "success");
   };
   
   const changeStatus = () => {
-    [
+    
       props.setTodos(
         props.todos.filter((element) => {
           if (element.id == props.id) element.status = !element.status;
           return element;
         })
-      ),
-    ];
+      )
+    
   };
 
   return (
